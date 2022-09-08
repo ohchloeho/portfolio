@@ -1,0 +1,12 @@
+2nd sept - started coloured program
+- reintergrated js concepts: queryselector, forEach
+- relearnt Math and simple array methods
+- relearnt for and forEach loops
+
+> figure out locking / unlocking btns
+> function for dynamic colour cards
+
+3rd sept
+built dynamic cards, figured out lock/unlock and delete btns
+- use of adding 'locked' to classlist to lock colours
+> done and completed!!

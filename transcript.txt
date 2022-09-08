@@ -1,0 +1,40 @@
+this is a portfolio of projects to be uploaded to repositories to showcase my understanding of programming langugages and frameworks
+
+DicStack
+2 weeks - dictionary program: 
+- API usage, React framework
+- experimentation with React router
+- traversing through data with various array method algorithms
+
+Coloured
+2-day colour generator simple: 
+- simple javascript Math methods, random, floor
+- appending elements dynamically
+
+Slida
+3-day simple dynamic image slider: 
+- image slider that shifts resolution according to image uploaded
+- slider changes based on time - set slider timer
+
+GetItDone!
+1-hour simple to-do list:
+- dynamically create div items
+- simple functions
+
+Calco
+simple calculator:
+- math methods
+- simple dynamic inputs
+
+TellMeTheTime
+clock that includes timezone and stopclock:
+- dynamic timezone according to user select
+- stopclock
+
+Spent!
+expense tracker: 
+
+
+
+
+

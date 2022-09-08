@@ -1,0 +1,19 @@
+4th Sept - project start
+- build basic html of slider elements
+- simple configuration of javascript and styling transitions
+> made next and prev btns work
+> figure out loop of imgs
+
+5th sept 
+- figured loop of next btn, not fully smooth
+
+6th sept
+- fixed loop, smooth transitions
+- fixed looping bug, relates to transition speed and clicking speed 
+    - fixed with making loop if statements dynamic
+
+7th sept
+> figured out how to make timer setter work
+
+extra feature:
+- figure out how to make images dynamic (user can upload their own and remove the dummy)
