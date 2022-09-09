@@ -16,17 +16,17 @@ GetItDone!
 - simple functions
 
 Calco
-simple calculator:
-- math methods
-- simple dynamic inputs
+2-day simple calculator:
+- eval methods
+- simple dynamic inputs, switch statements
+
+Spent!
+expense tracker: 
 
 TellMeTheTime
 clock that includes timezone and stopclock:
 - dynamic timezone according to user select
 - stopclock
-
-Spent!
-expense tracker: 
 
 DicStack
 2 weeks - dictionary program: 

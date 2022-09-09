@@ -1,3 +1,5 @@
 8th September 2022
 - figured out simple UI layout
-> figure out how to insert numbers as strings in output div
+- figure out how to insert numbers as strings in output div
+9th September 2022 
+- finished Calco simple state

@@ -1,0 +1,5 @@
+9th september 2022
+- started stopclok project
+- figured out separation of values to connect to output values
+- fixed fast-clicking bug
+- learnt about setInterval and clearInterval
