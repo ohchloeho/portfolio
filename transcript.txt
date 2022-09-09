@@ -1,11 +1,5 @@
 this is a portfolio of projects to be uploaded to repositories to showcase my understanding of programming langugages and frameworks
 
-DicStack
-2 weeks - dictionary program: 
-- API usage, React framework
-- experimentation with React router
-- traversing through data with various array method algorithms
-
 Coloured
 2-day colour generator simple: 
 - simple javascript Math methods, random, floor
@@ -34,7 +28,11 @@ clock that includes timezone and stopclock:
 Spent!
 expense tracker: 
 
-
+DicStack
+2 weeks - dictionary program: 
+- API usage, React framework
+- experimentation with React router
+- traversing through data with various array method algorithms
 
 
 
