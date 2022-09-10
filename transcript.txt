@@ -20,6 +20,11 @@ Calco
 - eval methods
 - simple dynamic inputs, switch statements
 
+StopClok
+1-day Simple timer
+- setInterval and clearInterval
+- conditional statements
+
 Spent!
 expense tracker: 
 
