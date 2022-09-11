@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Expenses (){
-    return <div></div>
+export default function Expenses(props) {
+  return <div></div>;
 }

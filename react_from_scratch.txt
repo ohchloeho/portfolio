@@ -1,0 +1,74 @@
+10th September 2022
+- started React project from scratch
+1. make sure node and npm are up to date
+
+2. install packages with: npm init -y 
+    > package.json file should load
+
+3. install other dependencies with:
+    React - npm i react react-dom 
+    Webpack - npm i --save-dev webpack webpack-cli webpack-dev-server
+    Babel - npm i --save-dev babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react babel-eslint @babel/runtime
+
+4. create .babelrc file and include the following:
+    {
+        "presets": ["@babel/preset-env", "@babel/preset-react"],
+        "plugins": ["@babel/plugin-transform-runtime"]
+    }
+
+5. create webpack.config.js file and include the following:
+    const path = require("path");
+    module.exports = {
+        mode: "development",
+        entry: "./index.js",
+        output: {
+            path: path.resolve(__dirname, "public"),
+            filename: "main.js",
+    },
+    target: "web",
+    devServer: {
+        port: "3000",
+        static: ["./public"],
+        open: true,
+        hot: true,
+        liveReload: true,
+    },
+    resolve: {
+        extensions: [".js", ".jsx", ".json"],
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: "babel-loader",
+            },
+        ],
+    },
+};
+
+6. in package.json, add the following under "scripts"
+    "start" : "webpack-dev-server .",
+    "build" : "Webpack ."
+
+7. add new folder - public and add an index.html file within it
+    - create div with id='root' and script with src="main.js"
+
+8. make new index.js file within a new src folder, include following code:
+    import React from "react";
+    import ReactDOM from "react-dom/client";
+    import App from "./App";
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+    );
+
+9. edit package.json "main" to "./src/index.js" & webpack.config.js > module.exports > output > filename to "main.js"
+
+10. run npm run build in terminal, main.js file should generate
+
+11. run npm start to load webpage
+
+12. figure out how to connect css-loader to webpack

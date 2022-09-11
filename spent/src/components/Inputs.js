@@ -4,12 +4,12 @@ export default function Inputs(props) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
-  const [type, setType] = useState(false); //false = expense, true = income
+  const [type, setType] = useState(""); //false = expense, true = income
 
   const dataSubmit = (e) => {
     e.preventDefault();
     if (name && date && amount) {
-      console.log(name, date, amount, type);
+      props.onInputData({name, date, amount, type});
     }
   };
 
@@ -22,6 +22,7 @@ export default function Inputs(props) {
           onChange={(e) => {
             setName(e.target.value);
           }}
+          value={name}
         />
         <input
           placeholder="amount"
@@ -29,12 +30,14 @@ export default function Inputs(props) {
           onChange={(e) => {
             setAmount(e.target.value);
           }}
+          value={amount}
         />
         <input
           type="date"
           onChange={(e) => {
             setDate(e.target.value);
           }}
+          value={date}
         />
         <input
           type="radio"
@@ -42,7 +45,7 @@ export default function Inputs(props) {
           id="expense-check"
           name="transaction-type"
           onChange={() => {
-            setType(false);
+            setType("expense");
           }}
         />
         <label>expense</label>
@@ -52,7 +55,7 @@ export default function Inputs(props) {
           id="income-check"
           name="transaction-type"
           onChange={() => {
-            setType(true);
+            setType("income");
           }}
         />
         <label>income</label>
