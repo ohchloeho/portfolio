@@ -3,9 +3,6 @@ import React, { useState } from "react";
 export default function Transactions(props) {
   let allTransactions = props.data;
 
-  //set text color according to income / expense
-  const [incomeOrExpenseColor, setIncomeOrExpenseColor] = useState("green");
-
   //sorting function
   const [sort, setSort] = useState("");
   function dynamicSort(property) {
@@ -15,16 +12,20 @@ export default function Transactions(props) {
       return result;
     };
   }
+  //sorted render
+  if (sort === "date") {
+    allTransactions.sort(dynamicSort("date"));
+  }
+  if (sort === "amount") {
+    allTransactions.sort(dynamicSort("amount"));
+  }
+  if (sort === "name") {
+    allTransactions.sort(dynamicSort("name"));
+  }
 
-  if (sort == "date") {
-    allTransactions.sort(dynamicSort("date"))
-  }
-  if (sort == "amount") {
-    allTransactions.sort(dynamicSort("amount"))
-  }
-  if (sort == "name") {
-    allTransactions.sort(dynamicSort("name"))
-  }
+  //filtering function
+
+  //filtered renders
 
   return (
     <div className="Transactions-cont">
@@ -39,19 +40,31 @@ export default function Transactions(props) {
         <option value="amount">amount</option>
         <option value="name">name</option>
       </select>
+      <select>
+        <option value="no_selection">filter by...</option>
+        <option value="income">income</option>
+        <option value="expense">expense</option>
+      </select>
       <div className="transaction-item title">
         <p>date</p>
         <p>transaction</p>
         <p>amount</p>
       </div>
       {allTransactions.map((transaction, id) => {
-        if (transaction.type == "income") {
+        if (transaction.type === "income") {
           //income output
           return (
             <div className="transaction-item" key={id}>
               <p>{transaction.date} </p>
               <p>{transaction.name}</p>
               <p style={{ color: "green" }}>${transaction.amount}</p>
+              <button
+                onClick={() => {
+                  props.onRemoveTransaction(id); //deletion
+                }}
+              >
+                delete
+              </button>
             </div>
           );
         } else {
@@ -61,6 +74,13 @@ export default function Transactions(props) {
               <p>{transaction.date} </p>
               <p>{transaction.name}</p>
               <p style={{ color: "red" }}>${transaction.amount}</p>
+              <button
+                onClick={() => {
+                  props.onRemoveTransaction(id); //deletion
+                }}
+              >
+                delete
+              </button>
             </div>
           );
         }

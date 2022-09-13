@@ -5,7 +5,7 @@ export default function Inputs(props) {
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("");
-  const [radioState, setRadioState] = useState(undefined);
+  const [radioState, setRadioState] = useState(false);
 
   //onSubmit function
   const dataSubmit = (e) => {

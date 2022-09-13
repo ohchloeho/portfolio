@@ -12,6 +12,8 @@
 - basic localDB setup
 - clear form function once submitted - form reset
 
+13th September 2022
+- localDB persists on refresh
+- delete buttons functionality
 
-> add sort by exp, inc, month, etc
-> add database functionalities, store values in firebase or link to external database
+> filter functionalities
