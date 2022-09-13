@@ -15,5 +15,7 @@
 13th September 2022
 - localDB persists on refresh
 - delete buttons functionality
+- filtering functionality - if statements conditional rendering
 
-> filter functionalities
+
+> bug fixes for radio buttons

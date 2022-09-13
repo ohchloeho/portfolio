@@ -27,17 +27,26 @@ StopClok
 
 Spent!
 expense tracker: 
+- React.js components
+- props, passing data parent > child and child > parent
+- localStorage setup and update
+- conditional rendering
+- Numbers and string values
+- form resets and field clearing
+
+Wordie
+dictionary program, word generator:
+- API usage, React framework
+- traversing through data - array methods
+- react router
 
 TellMeTheTime
-clock that includes timezone and stopclock:
-- dynamic timezone according to user select
-- stopclock
+clock that switches timezones based on user selection:
+- dynamic timezone data
+    - API requests
+- react router
+- active rendering
 
-DicStack
-2 weeks - dictionary program: 
-- API usage, React framework
-- experimentation with React router
-- traversing through data with various array method algorithms
 
 
 

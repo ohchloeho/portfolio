@@ -24,8 +24,15 @@ export default function Transactions(props) {
   }
 
   //filtering function
-
-  //filtered renders
+  const [filter, setFilter] = useState("no_selection");
+  //filtered render
+  if (filter === "income") {
+    console.log(
+      allTransactions.filter((transactions) => {
+        return transactions.type === "income";
+      })
+    );
+  }
 
   return (
     <div className="Transactions-cont">
@@ -40,51 +47,101 @@ export default function Transactions(props) {
         <option value="amount">amount</option>
         <option value="name">name</option>
       </select>
-      <select>
+      <select
+        onChange={(e) => {
+          setFilter(e.target.value);
+        }}
+      >
         <option value="no_selection">filter by...</option>
         <option value="income">income</option>
         <option value="expense">expense</option>
+        <option value="all">all</option>
       </select>
       <div className="transaction-item title">
         <p>date</p>
         <p>transaction</p>
         <p>amount</p>
       </div>
-      {allTransactions.map((transaction, id) => {
-        if (transaction.type === "income") {
-          //income output
-          return (
-            <div className="transaction-item" key={id}>
-              <p>{transaction.date} </p>
-              <p>{transaction.name}</p>
-              <p style={{ color: "green" }}>${transaction.amount}</p>
-              <button
-                onClick={() => {
-                  props.onRemoveTransaction(id); //deletion
-                }}
-              >
-                delete
-              </button>
-            </div>
-          );
-        } else {
-          //expense output
-          return (
-            <div className="transaction-item" key={id}>
-              <p>{transaction.date} </p>
-              <p>{transaction.name}</p>
-              <p style={{ color: "red" }}>${transaction.amount}</p>
-              <button
-                onClick={() => {
-                  props.onRemoveTransaction(id); //deletion
-                }}
-              >
-                delete
-              </button>
-            </div>
-          );
-        }
-      })}
+      {(filter === "no_selection") | (filter === "all")
+        ? allTransactions.map((transaction, id) => {
+            if (transaction.type === "income") {
+              //income output
+              return (
+                <div className="transaction-item" key={id}>
+                  <p>{transaction.date} </p>
+                  <p>{transaction.name}</p>
+                  <p style={{ color: `green` }}>${transaction.amount}</p>
+                  <button
+                    onClick={() => {
+                      props.onRemoveTransaction(id); //deletion
+                    }}
+                  >
+                    delete
+                  </button>
+                </div>
+              );
+            } else {
+              //expense output
+              return (
+                <div className="transaction-item" key={id}>
+                  <p>{transaction.date} </p>
+                  <p>{transaction.name}</p>
+                  <p style={{ color: "red" }}>${transaction.amount}</p>
+                  <button
+                    onClick={() => {
+                      props.onRemoveTransaction(id); //deletion
+                    }}
+                  >
+                    delete
+                  </button>
+                </div>
+              );
+            }
+          })
+        : null}
+
+      {filter === "income" &&
+        allTransactions
+          .filter((transactions) => {
+            return transactions.type === "income";
+          })
+          .map((transaction, id) => {
+            return (
+              <div className="transaction-item" key={id}>
+                <p>{transaction.date} </p>
+                <p>{transaction.name}</p>
+                <p style={{ color: `green` }}>${transaction.amount}</p>
+                <button
+                  onClick={() => {
+                    props.onRemoveTransaction(id); //deletion
+                  }}
+                >
+                  delete
+                </button>
+              </div>
+            );
+          })}
+      {filter === "expense" &&
+        allTransactions
+          .filter((transactions) => {
+            return transactions.type === "expense";
+          })
+          .map((transaction, id) => {
+            return (
+              <div className="transaction-item" key={id}>
+                <p>{transaction.date} </p>
+                <p>{transaction.name}</p>
+                <p style={{ color: `red` }}>${transaction.amount}</p>
+                <button
+                  onClick={() => {
+                    props.onRemoveTransaction(id); //deletion
+                  }}
+                >
+                  delete
+                </button>
+              </div>
+            );
+          })}
     </div>
   );
 }
