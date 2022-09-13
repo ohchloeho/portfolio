@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./global.css";
 import Inputs from "./components/Inputs";
 import Transactions from "./components/Transactions";
 import Balances from "./components/Balances";
 
 function App() {
-  const [data, setData] = useState([
+
+  const [data, updateData] = useState([
     {
       name: "paycheck",
       amount: 3000,
@@ -18,15 +19,26 @@ function App() {
       date: "2022-06-16",
       type: "expense",
     },
+    {
+      name: "iphone 14",
+      amount: 988,
+      date: "2022-03-16",
+      type: "expense",
+    },
   ]);
-  console.log(data);
+  //updating and storing values in localDB
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(data))
+  }, [data]);
+
+  //update data once inputed
   const onInputData = (event) => {
-    setData([...data, event]);
+    updateData([...data, event]);
   };
   return (
     <div className="App">
       <h1>hello i track expenses</h1>
-      <Balances data={data}/>
+      <Balances data={data} />
       {data.length > 0 && <Transactions data={data} />}
       <Inputs onInputData={onInputData} />
     </div>

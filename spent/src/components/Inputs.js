@@ -4,12 +4,20 @@ export default function Inputs(props) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
-  const [type, setType] = useState(""); //false = expense, true = income
+  const [type, setType] = useState("");
+  const [radioState, setRadioState] = useState(undefined);
 
+  //onSubmit function
   const dataSubmit = (e) => {
     e.preventDefault();
     if (name && date && amount) {
-      props.onInputData({name, date, amount, type});
+      //ensure no empty strings or input
+      props.onInputData({ name, date, amount, type });
+      //clearing fields onSubmit
+      setRadioState(false);
+      setName("");
+      setDate("");
+      setAmount("");
     }
   };
 
@@ -41,24 +49,26 @@ export default function Inputs(props) {
         />
         <input
           type="radio"
-          value="expense"
-          id="expense-check"
-          name="transaction-type"
-          onChange={() => {
-            setType("expense");
-          }}
-        />
-        <label>expense</label>
-        <input
-          type="radio"
-          value="income"
           id="income-check"
           name="transaction-type"
+          checked={radioState}
           onChange={() => {
             setType("income");
+            setRadioState(true);
           }}
         />
         <label>income</label>
+        <input
+          type="radio"
+          id="expense-check"
+          name="transaction-type"
+          checked={radioState}
+          onChange={() => {
+            setType("expense");
+            setRadioState(true);
+          }}
+        />
+        <label>expense</label>
         <button type="submit">add</button>
       </form>
     </div>

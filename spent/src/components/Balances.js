@@ -6,7 +6,7 @@ export default function Balances(props) {
     if (balance.type === "expense") {
       return -1 * balance.amount;
     } else {
-      return balance.amount;
+      return Number(balance.amount);
     }
   });
   console.log(allBalancesArr);

@@ -6,5 +6,12 @@
 - built transactions component
 - built balances component
 - main functionalities completed
+
+12th September 2022
+- built basic sorting functions
+- basic localDB setup
+- clear form function once submitted - form reset
+
+
 > add sort by exp, inc, month, etc
-> add database functionalities, store values
+> add database functionalities, store values in firebase or link to external database

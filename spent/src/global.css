@@ -14,7 +14,7 @@
 }
 .App > *{
     margin-top: 2%;
-    width: 40%;
+    min-width: 400px;
     height: fit-content;
 }
 .Transactions-cont > ul{
