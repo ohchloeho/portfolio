@@ -1,0 +1,5 @@
+14th September 2022
+- started build
+- set up basic UI design
+- components setup
+- fetch requests with await and async functions
