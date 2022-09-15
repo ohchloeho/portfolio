@@ -3,3 +3,17 @@
 - set up basic UI design
 - components setup
 - fetch requests with await and async functions
+
+15th September 2022
+- built rhymes component and rendering
+- basic loader function
+
+
+> history log - store values in local storage
+> highlight rhymes with high frequencies
+
+
+lessons learnt in react components:
+- code and be structured to be used more efficiently
+    - mapping components to outputs instead of inputs and outputs as separate component
+    - data is hard to pass through - figure out react hooks to pass data

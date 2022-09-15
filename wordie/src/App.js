@@ -10,13 +10,19 @@ function App() {
   const onWordSearch = (event) => {
     setWordSearched(event.target.value);
   };
+   //loader render
+   const [loader, setLoader] = useState(false)
 
   //data fetching function - dynamic... kind of?
   const [definitionData, setDefinitionData] = useState();
   const [synonymData, setSynonymData] = useState();
   const [rhymeData, setRhymeData] = useState();
   async function fetchAPI(url, value, dataType) {
+    setLoader(true)
     const response = await fetch(url + value);
+    if(response){ //hide loader
+      setLoader(false)
+    }
     let data = await response.json();
     console.log(data);
     switch (dataType) {
@@ -31,9 +37,13 @@ function App() {
         break;
     }
   }
+  //data display (react-router-alt)
+  const [defTabDisplay, setDefTabDisplay] = useState(false);
+  const [synTabDisplay, setSynTabDisplay] = useState(false);
+  const [rhyTabDisplay, setRhyTabDisplay] = useState(false);
 
   //API data request for //*definitions
-  const fetchDefinition = (e) => {
+  const onClickDefinition = (e) => {
     e.preventDefault();
     if (wordSearched.length > 0) {
       fetchAPI(
@@ -42,9 +52,13 @@ function App() {
         "definition"
       );
     }
+    //*displays
+    setDefTabDisplay(true);
+    setSynTabDisplay(false);
+    setRhyTabDisplay(false);
   };
   //API data request for //*synonyms
-  const fetchSynonym = (e) => {
+  const onClickSynonym = (e) => {
     e.preventDefault();
     if (wordSearched.length > 0) {
       fetchAPI(
@@ -53,9 +67,12 @@ function App() {
         "synonyms"
       );
     }
+    setSynTabDisplay(true);
+    setRhyTabDisplay(false);
+    setDefTabDisplay(false);
   };
   //API data request for //*rhymes
-  const fetchRhyme = (e) => {
+  const onClickRhyme = (e) => {
     e.preventDefault();
     if (wordSearched.length > 0) {
       fetchAPI(
@@ -64,6 +81,9 @@ function App() {
         "rhymes"
       );
     }
+    setRhyTabDisplay(true);
+    setSynTabDisplay(false);
+    setDefTabDisplay(false);
   };
 
   //reset field and clears outputs
@@ -85,17 +105,24 @@ function App() {
             value={wordSearched}
             onChange={onWordSearch}
           />
-          <button onClick={fetchDefinition}>definition</button>
-          <button onClick={fetchSynonym}>synonyms</button>
-          <button onClick={fetchRhyme}>rhymes</button>
+          <button onClick={onClickDefinition}>definition</button>
+          <button onClick={onClickSynonym}>synonyms</button>
+          <button onClick={onClickRhyme}>rhymes</button>
           <button type="submit">clear</button>
         </form>
       </div>
       <div className="output">
-        {definitionData && <Definition data={definitionData} />}
-        {synonymData && <Synonym data={synonymData} />}
-        {rhymeData && <Rhyme data={rhymeData} />}
+        {!wordSearched&&<p>enter a word to begin!</p>}
+        {loader && <p>loading...</p>}
+        {definitionData && defTabDisplay && (
+          <Definition data={definitionData} />
+        )}
+        {synonymData && synTabDisplay && <Synonym data={synonymData} />}
+        {rhymeData && rhyTabDisplay && <Rhyme data={rhymeData} />}
       </div>
+      <footer>
+        <p>powered by dictionaryapi.dev and rhymebrain</p>
+      </footer>
     </div>
   );
 }

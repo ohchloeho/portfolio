@@ -28,7 +28,6 @@ export default function Synonym(props) {
   let antOutput = [].concat(...antonyms).filter((arr) => {
     return arr.length > 0;
   })[0];
-  console.log(synonyms, antonyms);
 
   return (
     <div className="flexrow">
