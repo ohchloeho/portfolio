@@ -38,7 +38,7 @@ Wordie
 dictionary program, word generator:
 - API usage, React framework
 - traversing through data - array methods
-- react router
+- await and async function
 
 TellMeTheTime
 clock that switches timezones based on user selection:

@@ -10,34 +10,45 @@ function App() {
   const onWordSearch = (event) => {
     setWordSearched(event.target.value);
   };
-   //loader render
-   const [loader, setLoader] = useState(false)
+  //loader and error renders
+  const [loader, setLoader] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false);
 
   //data fetching function - dynamic... kind of?
   const [definitionData, setDefinitionData] = useState();
   const [synonymData, setSynonymData] = useState();
   const [rhymeData, setRhymeData] = useState();
+
   async function fetchAPI(url, value, dataType) {
-    setLoader(true)
+    setLoader(true); //show loader while loading
     const response = await fetch(url + value);
-    if(response){ //hide loader
-      setLoader(false)
-    }
-    let data = await response.json();
-    console.log(data);
-    switch (dataType) {
-      case "definition":
-        setDefinitionData(data);
-        break;
-      case "synonyms":
-        setSynonymData(data);
-        break;
-      case "rhymes":
-        setRhymeData(data);
-        break;
+    if (!response.ok) {
+      //error message
+      const message = `An error has occured: ${response.status}`;
+      setLoader(false);
+      setErrorMsg(true);
+      throw new Error(message);
+    } else {
+      setErrorMsg(false); //hide error
+      if (response) {
+        setLoader(false); //hide loader
+      }
+      let data = await response.json();
+      console.log(data);
+      switch (dataType) {
+        case "definition":
+          setDefinitionData(data);
+          break;
+        case "synonyms":
+          setSynonymData(data);
+          break;
+        case "rhymes":
+          setRhymeData(data);
+          break;
+      }
     }
   }
-  //data display (react-router-alt)
+  //data displays
   const [defTabDisplay, setDefTabDisplay] = useState(false);
   const [synTabDisplay, setSynTabDisplay] = useState(false);
   const [rhyTabDisplay, setRhyTabDisplay] = useState(false);
@@ -93,6 +104,7 @@ function App() {
     setDefinitionData("");
     setRhymeData("");
     setSynonymData("");
+    setErrorMsg(false);
   };
 
   return (
@@ -112,8 +124,11 @@ function App() {
         </form>
       </div>
       <div className="output">
-        {!wordSearched&&<p>enter a word to begin!</p>}
+        {!wordSearched && <p>enter a word to begin!</p>}
         {loader && <p>loading...</p>}
+        {errorMsg && (
+          <p>an error has occured, please check your spelling or network</p>
+        )}
         {definitionData && defTabDisplay && (
           <Definition data={definitionData} />
         )}

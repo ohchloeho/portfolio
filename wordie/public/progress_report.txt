@@ -7,11 +7,9 @@
 15th September 2022
 - built rhymes component and rendering
 - basic loader function
+- error messages from fetch requests
 
-
-> history log - store values in local storage
 > highlight rhymes with high frequencies
-
 
 lessons learnt in react components:
 - code and be structured to be used more efficiently
