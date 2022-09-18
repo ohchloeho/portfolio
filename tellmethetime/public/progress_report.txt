@@ -1,0 +1,13 @@
+16th September 2022
+- build start
+> components: current timezone, timezone comparison calculator
+
+17th September 2022
+- figured out getTimeZone() UTC 
+- fetched data from world time zone API
+
+18th September 2022
+- process group data from available time zones to render in searchBar or drop-down select
+- processed data to include timezone differences
+
+> fetch utc difference and output dynamic time display

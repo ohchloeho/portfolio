@@ -44,9 +44,5 @@ TellMeTheTime
 clock that switches timezones based on user selection:
 - dynamic timezone data
     - API requests
-- react router
+- hookrouter
 - active rendering
-
-
-
-
