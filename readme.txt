@@ -40,9 +40,3 @@ dictionary program, word generator:
 - traversing through data - array methods
 - await and async function
 
-TellMeTheTime
-clock that switches timezones based on user selection:
-- dynamic timezone data
-    - API requests
-- hookrouter
-- active rendering
