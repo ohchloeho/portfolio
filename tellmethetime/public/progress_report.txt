@@ -11,3 +11,6 @@
 - processed data to include timezone differences
 
 > fetch utc difference and output dynamic time display
+
+19th September 2022 
+- stalled build due to API performance - troubleshooting API

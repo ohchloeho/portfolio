@@ -67,6 +67,7 @@ function App() {
 
   // fetch output time to selected timezone
   const onTimezoneSelect = (e) => {
+    e.preventDefault();
     fetchTimezoneData(
       `http://worldtimeapi.org/api/timezone/${selectedRegion}/${e.target.value}`
     );
@@ -90,18 +91,21 @@ function App() {
               );
             })}
         </select>
-        {timezones.length > 0 && (
-          <select onChange={onTimezoneSelect}>
-            <option value="no_selection">select a timezone</option>
-            {timezones.map((timezone, key) => {
-              return (
-                <option key={key}>
-                  {timezone.slice(timezone.indexOf("/") + 1)}
-                </option>
-              );
-            })}
-          </select>
-        )}
+        <form onSubmit={onTimezoneSelect}>
+          {timezones.length > 0 && (
+            <select>
+              <option value="no_selection">select a timezone</option>
+              {timezones.map((timezone, key) => {
+                return (
+                  <option key={key}>
+                    {timezone.slice(timezone.indexOf("/") + 1)}
+                  </option>
+                );
+              })}
+            </select>
+          )}
+          <button type="submit">search</button>
+        </form>
       </div>
     </div>
   );
